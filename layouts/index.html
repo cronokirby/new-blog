@@ -5,7 +5,9 @@
     {{ range $pages }}
     <div class="w-full lg:w-2/3 bg-white mx-4 my-4 p-6 shadow-md rounded-lg">
       <div class="flex">
-        <h1 class="text-teal-dark mr-10">{{ .Title }}</h1>
+        <h1 class="text-teal-dark mr-10">
+          <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h1>
         <h4 class="ml-auto my-2 text-grey-dark">
           {{ .Date.Format "January 2, 2006" }}
         </h4>
