@@ -30,3 +30,4 @@ Thumbs.db
 public
 # Folders to ignore
 node_modules
+resources
