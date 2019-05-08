@@ -1,24 +1,20 @@
-<html>
-  <head>
-    
-    
-{{ if .Site.IsServer }}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  {{ if .Site.IsServer }}
   {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/dev/postcss.config.js") | fingerprint }}
-    
-  <link rel="stylesheet" href="{{ $style.Permalink }}" data> 
-
-{{ else }}
-
+  <link rel="stylesheet" href="{{ $style.Permalink }}" data>
+  {{ else }}
   {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js")  | minify | fingerprint }}
-  
-  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}"> 
+  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+  {{ end }}
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+</head>
 
-{{ end }}
+<body>
+  {{ block "main" . }}{{ end }}
+</body>
 
-    
-  </head>
-  <body>
-    {{ block "main" . }}{{ end }}
-  </body>
 </html>

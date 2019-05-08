@@ -1,6 +1,11 @@
 {{ define "main" }}
 <div class="sm:my-1 my-2 p-1">
   some content here
-</div>  
+</div>
+
+{{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
+{{ range $pages }}
+<p>{{ .Title }}</p>
+{{ end }}
 
 {{ end }}
