@@ -19,3 +19,13 @@ html, body {
 .link:hover {
     @apply text-teal-light
 }
+
+.post {
+    font-size: 18px;
+    line-height: 1.4rem;
+    color: #4e5050;
+}
+
+.post p {
+    @apply my-6
+}

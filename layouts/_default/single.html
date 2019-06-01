@@ -1,6 +1,10 @@
 {{ define "main" }}
-  <div class="container">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
+<div class="bg-teal-lighter py-2 h-full post">
+  <div class="container lg:w-1/2 pb-20 pt-6 px-10 rounded-lg shadow-lg bg-white">
+    <h1 class="mb-4 text-center text-teal-dark">{{ .Title }}</h1>
+    <div class="content">
+      {{ .Content }}
+    </div>
   </div>
+</div>
 {{ end }}
