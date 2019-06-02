@@ -27,3 +27,18 @@ a {
 a:hover {
     @apply text-grey;
 }
+
+.content {
+    @apply text-lg text-black font-sans;
+    line-height: 1.3;
+}
+
+.content h3 {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.content p {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}

@@ -1,3 +1,7 @@
 {{ define "main" }}
-{{.Content}}
+{{ partial "header.html" }}
+<div class="content w-2/3 mx-auto mt-20 py-5 px-10 shadow-lg">
+<h class="font-sans font-bold text-4xl">{{ .Title }}</h>
+{{ .Content }}
+</div>
 {{ end }}
