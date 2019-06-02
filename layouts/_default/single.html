@@ -1,7 +1,14 @@
 {{ define "main" }}
 {{ partial "header.html" }}
 <div class="content w-2/3 mx-auto mt-20 py-5 px-10 shadow-lg">
-<h class="font-sans font-bold text-4xl">{{ .Title }}</h>
-{{ .Content }}
+  {{ if eq .Section "posts" }}
+  <div class="flex items-baseline">
+    <h class="flex-grow font-sans font-bold text-4xl">{{ .Title }}</h>
+    <span class="flex-right font-bold text-grey-dark">
+    {{ .Date.Format "January 2, 2006" }}
+    </span>
+  </div>
+  {{ end }}
+  {{ .Content }}
 </div>
 {{ end }}
