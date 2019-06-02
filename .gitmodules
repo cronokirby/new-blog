@@ -1,0 +1,4 @@
+[submodule "git"]
+	path = git
+	url = git@github.com:cronokirby/cronokirby.github.io
+	branch = master
