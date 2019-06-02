@@ -3,6 +3,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+    font-family: 'Iosevka';
+    src: url('/iosevka-regular.woff2') format('woff2');
+}
+
 html, body {
     height: 100%;
     width: 100%;
