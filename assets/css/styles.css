@@ -70,8 +70,14 @@ a:hover {
 
 .content code {
     @apply font-mono;
+    @apply text-sm;
     font-family: Iosevka, monospace;
-    font-size: 19px;
+}
+
+@media (min-width: 500px) {
+    .content code {
+        font-size: 19px;
+    }
 }
 
 .no-under {
