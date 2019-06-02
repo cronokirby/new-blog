@@ -1,27 +1,26 @@
 {{ define "main" }}
 {{ partial "header.html" }}
-<div class="content w-2/3 mx-auto mt-20 pt-5 pb-10 px-10 shadow-lg">
+<div class="content w-3/4 mx-auto mt-20 pt-5 pb-10 px-10 shadow-lg">
 
   {{ if eq .Section "posts" }}
   <div class="flex items-baseline">
-    <h class="flex-grow font-sans uppercase font-bold text-4xl">{{ .Title }}</h>
+    <h class="w-3/4 font-sans uppercase font-bold text-3xl">{{ .Title }}</h>
     <span class="flex-right font-bold text-grey-dark">
       {{ .Date.Format "January 2, 2006" }}
     </span>
   </div>
   {{ end }}
-  {{ .Content }}
+  <div class="mt-6">
+    {{ .Content }}
+  </div>
 
   {{ if eq .Section "posts" }}
   <div class="mt-16 flex">
     {{ if .PrevInSection }}
-    <a class="uppercase font-bold text-black flex-grow" href="{{ .PrevInSection.Permalink }}">
-      {{ .PrevInSection.Title }} <<
-    </a>
-    {{ end }}
-    {{ if .NextInSection }}
-    <a class="uppercase font-bold text-black" href="{{ .NextInSection.Permalink }}">
-      >> {{ .NextInSection.Title }}
+    <a class="no-under uppercase font-bold text-black flex-grow" href="{{ .PrevInSection.Permalink }}">
+      {{ .PrevInSection.Title }} << </a> {{ end }} {{ if .NextInSection }} <a
+        class="no-under uppercase font-bold text-black" href="{{ .NextInSection.Permalink }}">
+        >> {{ .NextInSection.Title }}
     </a>
     {{ end }}
   </div>
