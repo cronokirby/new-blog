@@ -9,3 +9,21 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.header {
+    position: fixed;
+    top: 0px;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+a {
+    @apply text-white;
+    text-decoration: none;
+}
+
+a:hover {
+    @apply text-grey;
+}
