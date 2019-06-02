@@ -39,6 +39,21 @@ a:hover {
 }
 
 .content p {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.content pre {
+    @apply bg-grey-lighter;
+    @apply shadow;
+    padding: 16px;
+    padding-left: 20px;
+    border-left-color: black;
+    border-left-width: 4px;
+}
+
+.content code {
+    @apply font-mono;
+    font-family: Iosevka, monospace;
+    font-size: 19px;
 }
