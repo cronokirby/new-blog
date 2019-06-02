@@ -39,3 +39,5 @@ int main() {
     }
 }
 ```
+
+here's some inline `.map()`
