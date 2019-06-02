@@ -35,7 +35,7 @@ a:hover {
 }
 
 .content {
-    @apply text-lg text-black font-sans;
+    @apply text-lg; @apply text-black; @apply font-sans;
     line-height: 1.3;
 }
 
