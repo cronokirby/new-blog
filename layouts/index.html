@@ -1,8 +1,10 @@
 {{ define "main" }}
-{{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
-<div class="flex flex-wrap">
-  {{ range $pages }}
-  {{ partial "post-title-card.html" .}}
-  {{ end }}
+<div class="h-full bg-grey-lighter">
+  {{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
+  <div class="flex flex-wrap">
+    {{ range $pages }}
+    {{ partial "post-title-card.html" .}}
+    {{ end }}
+  </div>
 </div>
 {{ end }}
