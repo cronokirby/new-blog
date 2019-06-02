@@ -1,20 +1,8 @@
 {{ define "main" }}
-<div class="bg-teal-lighter h-full">
-  <div class="p-2 w-3/4 container mx-auto flex flex-wrap justify-center">
-    {{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
-    {{ range $pages }}
-    <div class="w-full lg:w-2/3 bg-white mx-4 my-4 p-6 shadow-md rounded-lg">
-      <div class="flex">
-        <h1 class="text-teal-dark mr-10">
-          <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h1>
-        <h4 class="ml-auto my-2 text-grey-dark">
-          {{ .Date.Format "January 2, 2006" }}
-        </h4>
-      </div>
-      <p class="mt-5 text-lg">{{ .Description }}</p>
-    </div>
-    {{ end }}
-  </div>
+{{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
+<div class="flex flex-wrap">
+  {{ range $pages }}
+  {{ partial "post-title-card.html" .}}
+  {{ end }}
 </div>
 {{ end }}
