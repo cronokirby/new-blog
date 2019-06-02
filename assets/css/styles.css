@@ -49,6 +49,11 @@ a:hover {
     margin-bottom: 12px;
 }
 
+.content ul {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
 .content a:not(.no-under) {
     @apply text-grey-darker;
     text-decoration: underline;
