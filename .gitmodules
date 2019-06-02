@@ -2,3 +2,7 @@
 	path = git
 	url = git@github.com:cronokirby/cronokirby.github.io
 	branch = master
+[submodule "public"]
+	path = public
+	url = git@github.com:cronokirby/cronokirby.github.io.git
+	branch = master
