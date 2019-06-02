@@ -1,3 +1,4 @@
+hugo
 cd public
 git add .
 git commit -m "Rebuilding site"

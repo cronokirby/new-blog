@@ -54,11 +54,6 @@ a:hover {
     margin-bottom: 12px;
 }
 
-.content a:not(.no-under) {
-    @apply text-grey-darker;
-    text-decoration: underline;
-}
-
 .content pre {
     @apply bg-grey-lighter;
     @apply shadow;
@@ -69,10 +64,15 @@ a:hover {
 }
 
 .content code {
-    @apply font-mono;
     @apply text-sm;
     font-family: Iosevka, monospace;
 }
+
+.content a:not(.no-under) {
+    @apply text-grey-darker;
+    text-decoration: underline;
+}
+
 
 @media (min-width: 500px) {
     .content code {

@@ -6,8 +6,8 @@
   {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/dev/postcss.config.js") | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}" data>
   {{ else }}
-  {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js")  | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+  {{ $style := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/dev/postcss.config.js") | fingerprint | minify }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
   {{ end }}
   <meta charset="utf-8">
   <title>{{ .Title }}</title>
