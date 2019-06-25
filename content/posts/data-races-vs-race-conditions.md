@@ -16,7 +16,7 @@ that sparked this blog post in the first place.
 
 I agree almost entirely with
 [rust's definition of data races](https://doc.rust-lang.org/nomicon/races.html).
-Under this definition, a data race is when one or more thread concurrently
+Under this definition, a data race is when one or more threads concurrently
 access a location in memory / variable, at least one of which is a write,
 and at least one of which is not synchronized with other threads.
 
@@ -67,7 +67,7 @@ but since the access is synchronized, this is no longer a data race.
 ## Race Conditions
 
 Race conditions stem from `non-determinism` in concurrent programs.
-In theory any observable non-determinsm from concurrency could be *considered*
+In theory any observable non-determinism from concurrency could be *considered*
 a race condition, but in practice what constitutes a race condition depends
 on what properties we want our program to respect.
 
@@ -96,7 +96,7 @@ Thread B
 ```
 This could be considered a race condition, if the exact order of the printing
 was a property we wanted our program to respect. We could use some form of
-synchronization to enforece that order of printing.
+synchronization to enforce that order of printing.
 
 In practice we wouldn't consider this a race condition even if the execution
 isn't deterministic, because this isn't a property we care about.
