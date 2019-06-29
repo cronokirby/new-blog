@@ -4,7 +4,7 @@ date: 2019-06-28T20:55:57+02:00
 tech:
   - "Rust"
   - "SQLite"
-draft: true
+draft: false
 description: "Japanese Sentence Bank"
 link: "https://github.com/cronokirby/ginkou"
 ---

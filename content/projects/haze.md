@@ -5,7 +5,7 @@ tech:
   - "Haskell"
   - "Networking"
 description: Bittorrent Client
-draft: true
+draft: false
 link: "https://github.com/cronokirby/haze"
 ---
 
