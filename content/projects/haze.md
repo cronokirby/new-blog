@@ -9,6 +9,9 @@ draft: true
 link: "https://github.com/cronokirby/haze"
 ---
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+**Haze** is a complete bittorrent client, capable of downloading any kind
+of torrent found in the wild. Bittorrent is a peer-to-peer protocol, where a client
+joins a large swarm of peers in order to download a file of common interest. Haskell was
+used in order to help manage the concurrency involved in communicating with a large number of
+peers.
 <!--more-->
-It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.

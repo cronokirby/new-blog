@@ -9,6 +9,9 @@ description: "Japanese Sentence Bank"
 link: "https://github.com/cronokirby/ginkou"
 ---
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+**Ginkou** is a program to build up a corpus of searchable sentences.
+**Ginkou** can consume Japanese sentences from the command line, or from a text
+file, parse those sentences into words, and then index those sentences for
+easy retrieval. Given a word, **Ginkou** can look up sentences containing
+that word, even if it's in a different form, such as a conjugated verb.
 <!--more-->
-It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
