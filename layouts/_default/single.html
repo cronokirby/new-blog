@@ -2,15 +2,21 @@
 {{ partial "header.html" }}
 <div class="content w-full sm:w-3/4 lg:w-1/2 mx-auto mt-20 pt-5 pb-10 px-10 shadow-lg">
 
-  {{ if eq .Section "posts" }}
+  {{ if in "[posts, projects]" .Section }}
   <div class="flex flex-wrap items-baseline">
-    <h class="w-3/4 font-sans uppercase font-bold text-3xl">{{ .Title }}</h>
+    {{ if .Params.Link }}
+    <a href="{{ .Params.Link }}" class="title-link w-3/4 font-sans font-bold text-3xl">
+      {{ .Title }}
+    </a>
+    {{ else }}
+    <h class="w-3/4 font-sans font-bold text-3xl">{{ .Title }}</h>
+    {{ end }}
     <span class="flex-right font-bold text-grey-dark">
       {{ .Date.Format "January 2, 2006" }}
     </span>
   </div>
   {{ end }}
-  <div class="mt-6">
+  <div class="text-content mt-6">
     {{ .Content }}
   </div>
 
