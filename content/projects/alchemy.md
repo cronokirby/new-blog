@@ -7,7 +7,7 @@ tech:
   - "Rest APIs"
   - "Websocket APIs"
 withpost: false
-description: "A discord library for Elixir"
+description: "A Discord Library for Elixir"
 link: "https://github.com/cronokirby/hax"
 ---
 
