@@ -1,5 +1,10 @@
-<div class="post-title text-center text-grey-lightest bg-black p-10 mx-2 my-2 shadow-md">
-  <a class="text-white font-bold font-sans text-xl" href="{{ .Permalink }}">
-    {{ .Title }}
-  </a>
+<div class="w-full lg:w-3/4 shadow-md my-5 p-5 mx-auto">
+  <div class="flex items-baseline text-black">
+    <a class="text-left title-link w-3/4 text-lg font-bold" href="{{ .Permalink }}">
+      {{ .Title  }}
+    </a>
+    <span class="flex-right font-bold text-grey-dark">
+      {{ .Date.Format "January 2, 2006" }}
+    </span>
+  </div>
 </div>
