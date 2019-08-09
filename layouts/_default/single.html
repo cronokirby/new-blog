@@ -1,19 +1,19 @@
 {{ define "main" }}
 {{ partial "header.html" }}
-<div class="content w-full sm:w-4/5 lg:w-1/2 mx-auto mt-20 pt-5 pb-10 px-10 shadow-lg">
+<div class="content w-full sm:w-4/5 lg:w-1/2 mx-auto mt-20 pt-5 pb-10 px-10 shadow">
 
   {{ if in "[posts, projects]" .Section }}
-  <div class="flex flex-wrap items-baseline">
+  <div class="font-bold text-grey-dark">
+    {{ .Date.Format "January 2, 2006" }}
+  </div>
+  <div>
     {{ if .Params.Link }}
     <a href="{{ .Params.Link }}" class="title-link w-3/4 font-sans font-bold text-3xl">
       {{ .Title }}
     </a>
     {{ else }}
-    <h class="w-3/4 font-sans font-bold text-3xl">{{ .Title }}</h>
+    <h class="w-full font-bold text-5xl">{{ .Title }}</h>
     {{ end }}
-    <span class="flex-right font-bold text-grey-dark">
-      {{ .Date.Format "January 2, 2006" }}
-    </span>
   </div>
   {{ end }}
   <div class="text-content mt-6">
