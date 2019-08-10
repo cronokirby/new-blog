@@ -5,7 +5,7 @@ class TailwindExtractor {
 }
 
 module.exports = {    
-  plugins: [        
+  plugins: [
     require('postcss-import')({
       path: ["assets/css"],
     }), 
