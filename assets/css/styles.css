@@ -229,7 +229,6 @@ html, body {
 }
 
 .text-content code {
-    @apply text-sm;
     font-family: Iosevka, monospace;
 }
 
@@ -238,10 +237,13 @@ html, body {
     text-decoration: underline;
 }
 
+.content pre {
+  font-size: 0.9em;
+}
 
 @media (min-width: 500px) {
     .content code {
-        font-size: 16px;
+      font-size: 1em;
     }
 }
 

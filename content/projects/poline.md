@@ -6,7 +6,7 @@ tech:
   - "Programming Languages"
 description: "Tiny Language with Green Threading"
 withpost: false
-link: "https://github.com/cronokirby/poline**
+link: "https://github.com/cronokirby/poline"
 ---
 **Poline** is a little programming language I wrote to learn
 about implementing Green Threading. The language
