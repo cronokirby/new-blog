@@ -12,8 +12,8 @@ handle the concept of *interfaces*. We'll go over the classical
 approaches of languages like *Rust*, as well as others in between.
 
 # Why do we want interfaces?
-The problem *interfaces* address is *polymorphism*.
-*Polymorphism* is the ability for code to be flexible, and work
+The problem interfaces address is *polymorphism*.
+Polymorphism is the ability for code to be flexible, and work
 on different types of things. In practice this means functions
 that can accept different types, and work differently based on those
 types.
@@ -26,11 +26,11 @@ that depend only on certain behavior, and not on implementation
 details of a given type.
 
 # Classical Interfaces
-*Interfaces* in *Java* are a variant of *inheritance*, so
-let's look over how that works in *Java* first.
+Interfaces in Java are a variant of *inheritance*, so
+let's look over how that works in Java first.
 
 ## Inheritance
-*Java* has *classes*, and these have *methods*.
+Java has *classes*, and these have *methods*.
 For example:
 ```java
 class Rectangle {
@@ -47,10 +47,10 @@ class Rectangle {
   }
 }
 ```
-This is a class, with two *fields*, a *constructor*, and a *method*
+This is a class, with two *fields*, a *constructor*, and a method
 that makes use of both of those fields.
 
-We can create a new *instance* of this *class*, and call its methods
+We can create a new *instance* of this class, and call its methods
 as follows:
 ```java
 var rectangle = new Rectangle(3, 4);
@@ -58,7 +58,7 @@ System.out.println(rectangle.area());
 ```
 This program prints out `12`, as expected.
 
-We can also make new *classes* which inherit from another one,
+We can also make new classes which inherit from another one,
 for example:
 ```java
 class Square extends Rectangle {
@@ -75,11 +75,11 @@ System.out.println(square.area());
 ```
 This program prints out `9`.
 
-The `Square` *class* inherits all the methods and their implementations
+The `Square` class inherits all the methods and their implementations
 from its parent class `Rectangle`, and can use its parent's constructor.
 
-*Classes* can also change the implementation of certain methods. This
-is called *overriding* in *Java*.
+Classes can also change the implementation of certain methods. This
+is called *overriding* in Java.
 
 ```java
   @Override
@@ -89,9 +89,9 @@ is called *overriding* in *Java*.
 ```
 
 ## Abstract Classes
-*Java* also has a feature called *abstract classes*.
+Java also has a feature called *abstract classes*.
 
-*Abstract Classes* have one big difference from normal classes:
+Abstract classes have one big difference from normal classes:
 they can choose to not provide an implementation for a given method.
 
 For example:
@@ -105,16 +105,16 @@ abstract class Shape {
   }
 }
 ```
-We've left the `height` method *abstract*. We can't actually create
-instances of the `Shape` class. Instead, we need to extend the *class*,
+We've left the `height` method abstract. We can't actually create
+instances of the `Shape` class. Instead, we need to extend the class,
 with another, and then we can create instances of that *subclass*.
 
 ## Interfaces
-Now that we've seen *classes*, and then *abstract classes*, we
-can move on to *interfaces*, as implemented in *Java*.
+Now that we've seen classes, and then abstract classes, we
+can move on to interfaces, as implemented in Java.
 
-An *interface* is essentially an *abstract class*, where
-all the methods are *abstract*.
+An interface is essentially an abstract class, where
+all the methods are abstract.
 
 For example:
 ```java
@@ -123,7 +123,7 @@ interface ShapeLike {
 }
 ```
 
-We can then have different *classes* that implement this interface:
+We can then have different classes that implement this interface:
 
 ```java
 class Rectangle implements ShapeLike {
@@ -150,25 +150,25 @@ class ShapeUtils {
    }
 }
 ```
-(We make a *class* with a *static* method because *Java* doesn't like free functions).
+(We make a class with a *static* method because Java doesn't like free functions).
 
-One key thing to notice here is that each *class* has to explicitly
-declare that it implements a given *interface*. There's no way to make
-an old *class* implement a new *interface*.
+One key thing to notice here is that each class has to explicitly
+declare that it implements a given interface. There's no way to make
+an old class implement a new interface.
 
-*Java* has many other ways of implementing *polymorphism* through
-inheritence, from *subclassing* to *abstract classes* to *interfaces*.
+Java has many other ways of implementing polymorphism through
+inheritence, from subclassing to abstract classes to interfaces.
 All of these have the common characteristic of a function accepting a given
 type, and not knowing whether or not that argument is of that type exactly,
-or a given subtype. When accepting an *interface*, a function can only use
-the methods that *interface* provides, and is oblivious to the other details the
-various *classes* implementing that *interface* provide.
+or a given subtype. When accepting an interface, a function can only use
+the methods that interface provides, and is oblivious to the other details the
+various classes implementing that interface provide.
 
 # Middle Ground: Go
-The main different between *Go* and *Java* is that in *Go*, implementing
-an *interface* is implicit, whereas in *Java*, this is explicit.
+The main difference between *Go* and Java is that in Go, implementing
+an interface is implicit, whereas in Java, this is explicit.
 
-Continuing with our geometry examples, in *Go* we might have code
+Continuing with our geometry examples, in Go we might have code
 that looks like this:
 ```go
 package main
@@ -193,29 +193,29 @@ func main() {
   fmt.Println(s.area())
 }
 ```
-(This is actually a complete *Go* program that can be run, and prints out `9`)
+(This is actually a complete Go program that can be run, and prints out `9`)
 
-The first part of this program declares a new *interface* type, named `Shape`.
-This *interface* is defined by the method `area`. With the way *interfaces*
-work in *Go*, any type that has a method named `area` with the right type signature
-can be used as that *interface*. Later on in the program, we assign a value
+The first part of this program declares a new interface type, named `Shape`.
+This interface is defined by the method `area`. With the way interfaces
+work in Go, any type that has a method named `area` with the right type signature
+can be used as that interface. Later on in the program, we assign a value
 of type `Square` to a variable of type `Shape`. This is allowed because
 `Square` has a method with the right name and types.
 
-One downside of *Java*'s *interfaces* is that old types cannot implement
-new *interfaces*. If we notice a behavior we want to abstract over,
-we can't make it with existing types. Because *Go* has implicit *interfaces*,
+One downside of Java's interfaces is that old types cannot implement
+new interfaces. If we notice a behavior we want to abstract over,
+we can't make it with existing types. Because Go has implicit interfaces,
 if we notice that multiple types already have a given method, we can abstract
 over that. We can create a function that accepts any type that has a given set
-of methods by using *interfaces*.
+of methods by using interfaces.
 
 
 # Rust's Traits
-*Rust*'s version of *interfaces* is called *traits*. These
-*traits* function quite similarly to *Haskell*'s *typeclasses*.
+Rust's version of interfaces is called *traits*. These
+traits function quite similarly to *Haskell*'s *typeclasses*.
 
-The main difference between *Rust* and the other two examples
-we've seen so far is that in *Rust*, *traits* are implemented
+The main difference between Rust and the other two examples
+we've seen so far is that in Rust, traits are implemented
 explicitly, but can be implemented for existing types.
 
 Let's look at an example:
@@ -236,29 +236,29 @@ impl Shape for Square {
 ```
 
 We've seen a similar example a few times. This is very similar
-to the *Go* version, except that instead of implementing
-an `area` method in the struct (which we can do in *Rust*), and
-then having the *interface* implementation be implicit, we have
-to explicitly implement that *interface*.
+to the Go version, except that instead of implementing
+an `area` method in the struct (which we can do in Rust), and
+then having the interface implementation be implicit, we have
+to explicitly implement that interface.
 
-One advantage of explicit implementation is that the *Rust*
-compiler can warn us if we incorrectly implement an *interface*.
-In *Java* a similar thing happens as well.
+One advantage of explicit implementation is that the Rust
+compiler can warn us if we incorrectly implement an interface.
+In Java a similar thing happens as well.
 
 Because the implementation block is separate from the declaration
-of the type itself, we can implement a *trait* for a type that already
+of the type itself, we can implement a trait for a type that already
 exists. This is very useful, because we can identify abstractions at any time.
 
 There are two "guidelines" of sorts that constrain this a little bit.
-We should try and put a *trait* implementation either
+We should try and put a trait implementation either
   - In the same file as the declaration of a *trait*
   - In the same file as the declaration of a *type*
 
 For existing types, we have to put the implementation next
-to the *trait*, since we don't have access to the original file.
+to the trait, since we don't have access to the original file.
 
-For types we think up after having created the *interface*, we can
-implement that interface next to the *type*.
+For types we think up after having created the interface, we can
+implement that interface next to the type.
 
 # Interface Matrix
 We can divide up the design space we've gone over so far like so:
@@ -269,20 +269,20 @@ We can divide up the design space we've gone over so far like so:
 |Go      | Yes          | No     |
 |Rust    | Yes          | Yes    |
 
-I don't know of a language with some kind of *interface* construct
+I don't know of a language with some kind of interface construct
 which doesn't work with existing types, but has implicit implementation.
 I think that this may not even be possible. If the implementation is
 implicit, then it will pick up the methods that already
 exist for certain types.
 
 # My Opinions
-Now we come to the meat of the post: why I think *Rust*'s position
+Now we come to the meat of the post: why I think Rust's position
 in the design space is the best.
 
 ### Traits work with existing types
-This is the most important aspect of *traits* in my view.
+This is the most important aspect of traits in my view.
 
-By being able to implement new *traits* for old types,
+By being able to implement new traits for old types,
 you can discover and work on abstractions independently
 of other types. This allows you to work much more flexibly
 with other people's code, since you can implement
@@ -290,28 +290,28 @@ your own abstraction layer without having to write a
 bunch of wrapper types.
 
 ### Traits are still explicit
-In general, I prefer *explicit* behavior to *implicit*
+In general, I prefer explicit behavior to implicit
 behavior.
 
-One advantage of *trait* implementations being explicit
-is that it's easy to tell that a type implements a *trait*
-correctly. In *Rust*, if your implementation uses the wrong
+One advantage of trait implementations being explicit
+is that it's easy to tell that a type implements a trait
+correctly. In Rust, if your implementation uses the wrong
 name or method type, then you'll catch it then and there.
-In *Go*, you'll only catch this once you try and assign
-this type to a given *interface*.
+In Go, you'll only catch this once you try and assign
+this type to a given interface.
 
-The two guidelines for where *trait* implementations
+The two guidelines for where trait implementations
 should lie keeps things much more orderly. It's very easy
-to know what existing types a *trait* decided to provide
+to know what existing types a trait decided to provide
 implementations for, since they all have to be located
-next to the *trait* itself.
+next to the trait itself.
 
 # Summary
 Different languages have different ways of implementing
-*interface*-like concepts. The main axes in the design space
-are *explicit* vs *implicit* implementation, and working
+interface-like concepts. The main axes in the design space
+are explicit vs implicit implementation, and working
 with existing types or not.
 
-*Rust*'s position of working with existing types in an *explicit*
+Rust's position of working with existing types in an explicit
 way is the best, in my opinion.
 
