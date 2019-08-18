@@ -1,16 +1,18 @@
 ---
 title: "From Interfaces to Traits"
 date: 2019-08-17T08:32:00-04:00
-draft: true
+draft: false
 ---
 
+*(Note: This post is a first draft, and likely to change soon)*
+
 This is a post about how different languages
-handle the concept of **interfaces**. We'll go over the classical
+handle the concept of *interfaces*. We'll go over the classical
 *OO* way of handling them, with *Java*, to the more recent
 approaches of languages like *Rust*, as well as others in between.
 
 # Why do we want interfaces?
-The problem **interfaces** address is *polymorphism*.
+The problem *interfaces* address is *polymorphism*.
 *Polymorphism* is the ability for code to be flexible, and work
 on different types of things. In practice this means functions
 that can accept different types, and work differently based on those
@@ -19,8 +21,12 @@ types.
 For example, we might have a function that can do arithmetic
 on integers as well as floating point numbers.
 
+This is important because it allows us to write more reusable functions
+that depend only on certain behavior, and not on implementation
+details of a given type.
+
 # Classical Interfaces
-**Interfaces** in *Java* are a variant of *inheritance*, so
+*Interfaces* in *Java* are a variant of *inheritance*, so
 let's look over how that works in *Java* first.
 
 ## Inheritance
@@ -195,4 +201,117 @@ work in *Go*, any type that has a method named `area` with the right type signat
 can be used as that *interface*. Later on in the program, we assign a value
 of type `Square` to a variable of type `Shape`. This is allowed because
 `Square` has a method with the right name and types.
+
+One downside of *Java*'s *interfaces* is that old types cannot implement
+new *interfaces*. If we notice a behavior we want to abstract over,
+we can't make it with existing types. Because *Go* has implicit *interfaces*,
+if we notice that multiple types already have a given method, we can abstract
+over that. We can create a function that accepts any type that has a given set
+of methods by using *interfaces*.
+
+
+# Rust's Traits
+*Rust*'s version of *interfaces* is called *traits*. These
+*traits* function quite similarly to *Haskell*'s *typeclasses*.
+
+The main difference between *Rust* and the other two examples
+we've seen so far is that in *Rust*, *traits* are implemented
+explicitly, but can be implemented for existing types.
+
+Let's look at an example:
+```rust
+trait Shape {
+  fn area(&self) -> i32;
+}
+
+struct Square {
+  width: i32
+}
+
+impl Shape for Square {
+   fn area(&self) -> i32 {
+     width * width
+   }
+}
+```
+
+We've seen a similar example a few times. This is very similar
+to the *Go* version, except that instead of implementing
+an `area` method in the struct (which we can do in *Rust*), and
+then having the *interface* implementation be implicit, we have
+to explicitly implement that *interface*.
+
+One advantage of explicit implementation is that the *Rust*
+compiler can warn us if we incorrectly implement an *interface*.
+In *Java* a similar thing happens as well.
+
+Because the implementation block is separate from the declaration
+of the type itself, we can implement a *trait* for a type that already
+exists. This is very useful, because we can identify abstractions at any time.
+
+There are two "guidelines" of sorts that constrain this a little bit.
+We should try and put a *trait* implementation either
+  - In the same file as the declaration of a *trait*
+  - In the same file as the declaration of a *type*
+
+For existing types, we have to put the implementation next
+to the *trait*, since we don't have access to the original file.
+
+For types we think up after having created the *interface*, we can
+implement that interface next to the *type*.
+
+# Interface Matrix
+We can divide up the design space we've gone over so far like so:
+
+|Language|Existing Types|Explicit|
+|--------|--------------|--------|
+|Java    | No           | Yes    |
+|Go      | Yes          | No     |
+|Rust    | Yes          | Yes    |
+
+I don't know of a language with some kind of *interface* construct
+which doesn't work with existing types, but has implicit implementation.
+I think that this may not even be possible. If the implementation is
+implicit, then it will pick up the methods that already
+exist for certain types.
+
+# My Opinions
+Now we come to the meat of the post: why I think *Rust*'s position
+in the design space is the best.
+
+### Traits work with existing types
+This is the most important aspect of *traits* in my view.
+
+By being able to implement new *traits* for old types,
+you can discover and work on abstractions independently
+of other types. This allows you to work much more flexibly
+with other people's code, since you can implement
+your own abstraction layer without having to write a
+bunch of wrapper types.
+
+### Traits are still explicit
+In general, I prefer *explicit* behavior to *implicit*
+behavior.
+
+One advantage of *trait* implementations being explicit
+is that it's easy to tell that a type implements a *trait*
+correctly. In *Rust*, if your implementation uses the wrong
+name or method type, then you'll catch it then and there.
+In *Go*, you'll only catch this once you try and assign
+this type to a given *interface*.
+
+The two guidelines for where *trait* implementations
+should lie keeps things much more orderly. It's very easy
+to know what existing types a *trait* decided to provide
+implementations for, since they all have to be located
+next to the *trait* itself.
+
+# Summary
+Different languages have different ways of implementing
+*interface*-like concepts. The main axes in the design space
+are *explicit* vs *implicit* implementation, and working
+with existing types or not.
+
+*Rust*'s position of working with existing types in an *explicit*
+way is the best, in my opinion.
 
