@@ -18,7 +18,7 @@ module.exports = {
         extensions: ['html']
       }], 
       fontFace: true,
-      whitelist: ['class1', 'class2']
+      whitelist: ['content']
     }),    
     require('autoprefixer')({
       grid: true,

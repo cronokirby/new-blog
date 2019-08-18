@@ -219,6 +219,8 @@ html, body {
     margin-bottom: 12px;
 }
 
+/* purgecss start ignore */
+
 .content pre {
     @apply bg-grey-lighter;
     @apply shadow;
@@ -246,6 +248,7 @@ html, body {
       font-size: 1em;
     }
 }
+/* purgecss end ignore */
 
 .no-under {
     text-decoration: none;
