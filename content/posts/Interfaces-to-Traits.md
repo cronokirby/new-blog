@@ -4,8 +4,6 @@ date: 2019-08-17T08:32:00-04:00
 draft: false
 ---
 
-*(Note: This post is a first draft, and likely to change soon)*
-
 This is a post about how different languages
 handle the concept of *interfaces*. We'll go over the classical
 *OO* way of handling them, with *Java*, to the more recent
@@ -13,21 +11,26 @@ approaches of languages like *Rust*, as well as others in between.
 
 # Why do we want interfaces?
 The problem interfaces address is *polymorphism*.
-Polymorphism is the ability for code to be flexible, and work
-on different types of things. In practice this means functions
+Polymorphic code can work with different types of things
+in a flexible way. In practice this means functions
 that can accept different types, and work differently based on those
 types.
 
-For example, we might have a function that can do arithmetic
-on integers as well as floating point numbers.
+For example, we might have a function that can print out results
+to a file or directly to the terminal.
 
-This is important because it allows us to write more reusable functions
-that depend only on certain behavior, and not on implementation
-details of a given type.
+Polymorphism lets us write more reusable code. One function
+can operate on many types without having to be rewritten for each of them.
+
+Functions that use only an interface, instead of all the implementation
+details of a type, are easier to understand. For example, instead of
+depending on all of a file's operations, we only care about using it as another
+output stream. This allows our functions to worry
+about less things, and get closer to having a *single responsibility*.
 
 # Classical Interfaces
 Interfaces in Java are a variant of *inheritance*, so
-let's look over how that works in Java first.
+let's look over how that works first.
 
 ## Inheritance
 Java has *classes*, and these have *methods*.
@@ -56,9 +59,10 @@ as follows:
 var rectangle = new Rectangle(3, 4);
 System.out.println(rectangle.area());
 ```
-This program prints out `12`, as expected.
+This program prints out `12`, because we call this rectangle's methods using
+the data contained in its fields.
 
-We can also make new classes which inherit from another one,
+We can also make new classes which inherit from another;
 for example:
 ```java
 class Square extends Rectangle {
@@ -68,7 +72,7 @@ class Square extends Rectangle {
 }
 ```
 
-This *class* can be used like this:
+This class can be used like this:
 ```java
 var square = new Square(3);
 System.out.println(square.area());
@@ -77,6 +81,8 @@ This program prints out `9`.
 
 The `Square` class inherits all the methods and their implementations
 from its parent class `Rectangle`, and can use its parent's constructor.
+This means that it already has all of `Rectangle`'s methods and their
+implementations from the start.
 
 Classes can also change the implementation of certain methods. This
 is called *overriding* in Java.
@@ -92,7 +98,7 @@ is called *overriding* in Java.
 Java also has a feature called *abstract classes*.
 
 Abstract classes have one big difference from normal classes:
-they can choose to not provide an implementation for a given method.
+they can choose not to provide an implementation for a given method.
 
 For example:
 ```java
@@ -106,7 +112,7 @@ abstract class Shape {
 }
 ```
 We've left the `height` method abstract. We can't actually create
-instances of the `Shape` class. Instead, we need to extend the class,
+instances of the `Shape` class. Instead, we need to extend the class
 with another, and then we can create instances of that *subclass*.
 
 ## Interfaces
@@ -158,11 +164,11 @@ an old class implement a new interface.
 
 Java has many other ways of implementing polymorphism through
 inheritence, from subclassing to abstract classes to interfaces.
-All of these have the common characteristic of a function accepting a given
-type, and not knowing whether or not that argument is of that type exactly,
+All of these have allow a function to accept a given
+type without knowing whether that argument is of that exact type,
 or a given subtype. When accepting an interface, a function can only use
 the methods that interface provides, and is oblivious to the other details the
-various classes implementing that interface provide.
+various classes implementing that interface may have.
 
 # Middle Ground: Go
 The main difference between *Go* and Java is that in Go, implementing
@@ -204,7 +210,7 @@ of type `Square` to a variable of type `Shape`. This is allowed because
 
 One downside of Java's interfaces is that old types cannot implement
 new interfaces. If we notice a behavior we want to abstract over,
-we can't make it with existing types. Because Go has implicit interfaces,
+we can't make it work with existing types. Because Go has implicit interfaces,
 if we notice that multiple types already have a given method, we can abstract
 over that. We can create a function that accepts any type that has a given set
 of methods by using interfaces.
@@ -251,6 +257,7 @@ exists. This is very useful, because we can identify abstractions at any time.
 
 There are two "guidelines" of sorts that constrain this a little bit.
 We should try and put a trait implementation either
+
   - In the same file as the declaration of a *trait*
   - In the same file as the declaration of a *type*
 
