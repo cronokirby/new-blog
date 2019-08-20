@@ -1,8 +1,10 @@
 {{ define "main" }}
 {{ partial "header.html" }}
 <div class="py-20 bg-grey-lighter">
-  {{ range .Pages.ByPublishDate.Reverse }}
-    {{ partial "post-title-card.html" .}}
-  {{ end }}
+  <div class="w-3/4 lg:w-1/2 mx-auto flex flex-wrap">
+    {{ range .Pages.ByPublishDate.Reverse }}
+      {{ partial "post-title-card.html" .}}
+    {{ end }}
+  </div>
 </div>
 {{ end }}
