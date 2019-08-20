@@ -10,7 +10,7 @@
   <div class="text-left">
     {{ range .Params.Tags }}
       <span class="bg-black shadow py-1 px-2 mr-2 font-bold text-sm text-white">
-        {{ . }}
+        <a href="/tags/{{. | urlize}}/" class="tag-link">{{.}}</a>
       </span>
     {{ end}}
   </div>

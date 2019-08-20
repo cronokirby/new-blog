@@ -195,8 +195,18 @@ html, body {
     text-decoration: none;
 }
 
+
 .title-link:hover {
     @apply text-grey-darker;
+}
+
+.tag-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tag-link:hover {
+  @apply text-grey;
 }
 
 .content {
