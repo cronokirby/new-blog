@@ -2,6 +2,9 @@
 title: "From Interfaces to Traits"
 date: 2019-08-17T08:32:00-04:00
 draft: false
+tags:
+  - "Software Architecture"
+  - "Programming Languages"
 ---
 
 This is a post about how different languages

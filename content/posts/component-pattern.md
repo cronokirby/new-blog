@@ -3,6 +3,9 @@ title: "The Component Pattern"
 date: 2019-05-14T13:57:24+02:00
 description: "A common architectural pattern for organising stateful code"
 draft: false
+tags:
+  - "Software Architecture"
+  - "Functional Programming"
 ---
 
 This post details a useful pattern for organizing stateful components in functional code.

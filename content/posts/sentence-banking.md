@@ -2,6 +2,9 @@
 title: "Sentence Banking"
 date: 2019-07-07
 draft: false
+tags:
+  - Japanese
+  - Rust
 ---
 
 This is a post about [ginkou](https://github.com/cronokirby/ginkou), a tool I

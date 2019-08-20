@@ -2,6 +2,9 @@
 title: "Data Races vs Race Conditions"
 date: 2019-06-14T20:15:10+02:00
 draft: false
+tags:
+  - Concurrency
+  - Go
 ---
 
 This is a quick post about the difference between `Data Races` and
