@@ -252,3 +252,128 @@ The parser is written as a hand-crafted
 parser](https://en.wikipedia.org/wiki/Recursive_descent_parser),
 but going into how those work is a bit outside the scope of this post.
 
+# Simplification
+To illustrate what
+[simplification](https://github.com/cronokirby/poline/blob/master/src/simplifier.rs#L355)
+does, let's take the example program from previously:
+```
+fn main() {
+    print "main";
+    spawn main() as p;
+}
+```
+This simplifies into:
+```
+Program {
+    strings: ["main"],
+    main_function: 0,
+    functions: [FunctionDeclaration {
+       arg_count: 0, 
+       body: [
+          Statement::Print(Argument::Str(0)),
+          Statement::Spawn(FunctionCall {
+              name: 0,
+              args: []
+          })
+       ]
+    }]
+}
+```
+The first thing to notice is the extra information in addition to the syntax
+tree. We've moved all of the string litterals in our program into an external
+table, and we have an index for the main function. The main work done by
+simplification is to remove litteral strings and names from our syntax tree.
+Instead of referring to functions by their name, we refer to them by their
+index. We now refer to string litterals in the AST by their position in the table.
+Variables are referred to by their position on their stack.
+
+## Stack indices
+For variables, we refer to them by stack position. For example:
+```
+fn foo(x, y) {
+    print x;
+    print y;
+}
+```
+will simplify into:
+```
+FunctionDeclaration {
+    arg_count: 2,
+    body: [
+        Statement::Print(Argument::Name(0)),
+        Statement::Print(Argument::Name(1))
+    ]
+}
+```
+Instead of printing `x`, we now print `0`, since we're printing the variable
+with index `0` on the stack. We'll use a stack to contain the contents of our
+variables, so all the interpreter needs to do is lookup that position on the stack.
+
+## Shadowing
+
+You might have noticed previously that our spawn statement now takes a single argument
+instead of two. This is because we refer to variables by their index on the
+stack instead of their name. But spawn always introduces a new variable, even if 
+the name shadows an existing one. Because of this, there's no point having that
+second argument, since we always know that spawn pushes to the end of the stack.
+
+# Interpreter
+The [interpreter](https://github.com/cronokirby/poline/blob/master/src/interpreter.rs#L387)
+takes the AST produced in the previous steps, and actually runs the code
+contained inside.
+
+## Testing
+The main way I tested the interpreter was by comparing expected print outputs to
+what the interpreter actually spit out. In order to test these outputs without
+looking at a terminal, I used a trait for the effects the interpreter needed:
+
+```
+pub trait ProgramIO {
+    fn print(&mut self, message: &str);
+}
+```
+
+Instead of printing out directly, the interpreter would instead call this
+method. When testing, we pass an implementation of this trait that appends
+printed messages to a vector. We can inspect this in order to test the interpeter.
+
+## State
+The state the interpreter maintains looks something like this:
+```
+current_thread
+threads [
+    mailbox
+    calls [
+        function
+        statement_index
+        stack
+    ]
+]
+```
+Each thread has a mailbox to contain the messages it receives. The `send`
+statement results in a new variable being pushed there.
+
+We also have a sequence of function calls. Everytime a thread calls a function,
+it pushes some new state to the end of these calls. Whenever we reach the end of
+a function, we pop that state of from our stack of calls. We also have a stack
+containing the variables used in a function. We make sure to keep track of the
+function we're executing, along with the index of the statement we're at in that
+function, so that we can resume execution after preempting this thread.
+
+## Structure
+The way the interpeter works is by finding the next statement to execute,
+and then changing the state around it based on that statement.
+
+We first look for a statement in the current thread. If a thread becomes
+blocked, then the subsequent thread becomes the current thread. If a thread
+finishes executing, then we mark that thread's slot as dead, so that we can
+reuse that space.
+
+All the magic of green threading happens in this statement searching and current
+thread switching.
+
+# Further Reading
+This was a high level overview of how the interpreter for poline works. If you
+want a more detailed look, I'd recommend looking at the
+[source code](https://github.com/cronokirby/poline/) itself.
+
