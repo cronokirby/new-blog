@@ -20,8 +20,8 @@ managing concurrency. The core idea is to have many lightweight threads
 scheduled over fewer OS threads. These tiny threads are then managed by
 the runtime itself, instead of the OS.
 
-## Preemptive Scheduling
-Languages like Go, as well as Poline, do preemptive scheduling for their
+## Cooperative Scheduling
+Languages like Go, as well as Poline, do cooperative scheduling for their
 threads. The runtime knows when a given thread is performing a blocking
 operation, and can "preempt" that thread in order to run others. For example,
 when a thread is reading from a TCP socket, the runtime can switch off to other
