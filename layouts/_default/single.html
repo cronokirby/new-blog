@@ -3,8 +3,13 @@
 <div class="content w-full sm:w-4/5 lg:w-1/2 mx-auto mt-20 pt-5 pb-10 px-10 shadow">
 
   {{ if in "[posts, projects]" .Section }}
-  <div class="font-bold text-grey-dark">
-    {{ .Date.Format "January 2, 2006" }}
+  <div>
+    <span class="font-bold text-grey-dark">
+      {{ .Date.Format "January 2, 2006" }}
+    </span>
+    <span class="text-grey-dark px-10">
+      {{ .WordCount }} words
+    </span>
   </div>
   <div>
     {{ if .Params.Link }}
