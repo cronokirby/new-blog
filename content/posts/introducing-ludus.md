@@ -2,6 +2,9 @@
 title: "Introducing Ludus"
 date: 2019-06-13T21:35:12+02:00
 draft: false
+tags:
+  - Rust
+  - Emulation
 ---
 
 This is a short post about a crate I recently published:

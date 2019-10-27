@@ -3,6 +3,10 @@ title: "Notes on Ripple"
 date: 2019-04-09T13:04:46+02:00
 draft: false
 description: Thoughts on Ripple, and decentralised network shapes.
+tags:
+  - "Distributed Systems"
+  - Networking
+  - Go
 ---
 {{<mermaid/source>}}
 
