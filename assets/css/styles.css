@@ -258,6 +258,11 @@ html, body {
       font-size: 1em;
     }
 }
+
+svg {
+  max-width: 100%;
+}
+
 /* purgecss end ignore */
 
 .no-under {

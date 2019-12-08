@@ -2,7 +2,7 @@
 {{ partial "header.html" }}
 <div class="text-center py-20 bg-grey-lighter">
   {{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
-  <div class="w-3/4 lg:w-1/2 mx-auto flex flex-wrap">
+  <div class="sm:w-3/4 lg:w-1/2 mx-auto flex flex-wrap">
     {{ range $pages }}
     {{ partial "post-title-card.html" .}}
     {{ end }}

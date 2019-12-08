@@ -4,11 +4,11 @@ class TailwindExtractor {
 	}
 }
 
-module.exports = {    
-  plugins: [        
+module.exports = {
+  plugins: [
     require('postcss-import')({
       path: ["assets/css"],
-    }), 
+    }),
     require('tailwindcss')('./assets/css/tailwind.js'),
     require('@fullhuman/postcss-purgecss')({
       content: ['layouts/**/*.html'],
@@ -16,13 +16,13 @@ module.exports = {
       {
         extractor: TailwindExtractor,
         extensions: ['html']
-      }], 
+      }],
       fontFace: true,
-      whitelist: ['content']
-    }),    
+      whitelist: ['content', 'items-center', 'border*', 'justify', 'pt-4']
+    }),
     require('autoprefixer')({
       grid: true,
       browsers: ['>1%']
-    }),    
+    }),
   ]
 }

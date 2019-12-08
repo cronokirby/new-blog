@@ -13,9 +13,9 @@
   <div class="mb-2 text-grey-darkest">
     {{ .Params.Description }}
   </div>
-  <div class="flex">
+  <div class="flex items-center">
     {{ range .Params.Tech }}
-      <span class="bg-black shadow py-1 px-2 mr-2 font-bold text-sm text-white">
+      <span class="border-solid border-2 border-black text-black py-1 px-2 mr-2 font-bold text-sm">
         {{ . }}
       </span>
     {{ end}}

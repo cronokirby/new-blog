@@ -7,9 +7,9 @@
       {{ .Title  }}
     </a>
   </div>
-  <div class="text-left">
+  <div class="text-left flex items-center">
     {{ range .Params.Tags }}
-      <span class="bg-black shadow py-1 px-2 mr-2 font-bold text-sm text-white">
+      <span class="border-solid border-2 border-black text-black py-1 px-2 mr-2 font-bold text-sm">
         <a href="/tags/{{. | urlize}}/" class="tag-link">{{.}}</a>
       </span>
     {{ end}}
