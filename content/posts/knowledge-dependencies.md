@@ -15,3 +15,14 @@ but rather the omakase as a whole. Trusting the chef is part of the deal, if not
 This might seem a bit esoteric, but up-scale restaurants operate similarly with how they arrange courses. Usually you have
 a limited selection of courses, and each course consists of a rigid set of dishes. The dishes composing a course have been
 selected specifically by a chef.
+
+# Textbooks
+
+# Courses
+
+# Language Textbooks
+# Langauge Courses?
+# Immersion
+
+# Expanding to tech
+# Pitfalls
