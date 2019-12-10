@@ -1,7 +1,7 @@
 ---
 title: "Knowledge Dependencies"
 date: 2019-12-08T21:23:04+01:00
-draft: false
+draft: true
 ---
 
 (Or: knowing what you know is half the battle).
