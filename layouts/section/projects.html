@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ partial "header.html" }}
-<div class="mt-20">
+<div>
   {{ $pages := where site.RegularPages "Type" "in" "[projects]"}}
   {{ range $pages }}
   {{ partial "project-card.html" . }}

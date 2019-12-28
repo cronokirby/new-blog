@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ partial "header.html" }}
-<div class="text-center py-20 bg-grey-lighter">
+<div class="text-center bg-grey-lighter">
   {{ $pages := where site.RegularPages "Type" "in" "[posts]"}}
   <div class="sm:w-3/4 lg:w-1/2 mx-auto flex flex-wrap">
     {{ range $pages }}
