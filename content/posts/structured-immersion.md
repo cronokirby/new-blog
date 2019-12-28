@@ -2,6 +2,9 @@
 title: "Structured Immersion"
 date: 2019-12-28T13:13:00+01:00
 draft: false
+tags:
+  - "Japanese"
+  - "Programming"
 ---
 (Note: this is a first draft, and subject to change)
 
