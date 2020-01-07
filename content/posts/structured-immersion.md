@@ -2,6 +2,7 @@
 title: "Structured Immersion"
 date: 2019-12-28T13:13:00+01:00
 draft: false
+description: "What if you could automatically keep track of what you know in a language, and use that to progress even faster?"
 tags:
   - "Japanese"
   - "Programming"

@@ -2,6 +2,7 @@
 title: "Layerability and Abstraction"
 date: 2019-10-27T17:07:40+01:00
 draft: false
+description: "Why do I think layerability is the most important aspect of Networking?"
 tags:
   - Networking
   - Programming

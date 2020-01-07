@@ -2,6 +2,7 @@
 title: "Data Races vs Race Conditions"
 date: 2019-06-14T20:15:10+02:00
 draft: false
+description: "The difference between data races and race conditions, illustrated in Go"
 tags:
   - Concurrency
   - Go

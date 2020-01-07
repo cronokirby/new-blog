@@ -2,6 +2,7 @@
 title: "From Interfaces to Traits"
 date: 2019-08-17T08:32:00-04:00
 draft: false
+description: "What makes the concept of traits different from interfaces? Why would you want traits in the first place?"
 tags:
   - "Software Architecture"
   - "Programming Languages"
@@ -41,13 +42,13 @@ For example:
 ```java
 class Rectangle {
   private int height;
-  private int width; 
-  
+  private int width;
+
   public Rectangle(height, width) {
     this.height = height;
     this.width = width;
   }
-  
+
   public int area() {
     return height * width;
   }
@@ -107,7 +108,7 @@ For example:
 ```java
 abstract class Shape {
   abstract int height();
-  
+
   int heightSquared() {
     var h = height();
     return h * h;

@@ -2,6 +2,7 @@
 title: "Poline"
 date: 2019-08-31T19:18:13-04:00
 draft: false
+description: "This is a post about [Poline](https://github.com/cronokirby/poline), a tiny programming language I wrote recently."
 tags:
   - Rust
   - Programming Languages
@@ -200,7 +201,7 @@ until we call `next` to move the input forward.
 The lexer works by repeatedly calling `next`, and then emitting tokens based on
 what it says. The one situation where `peek` is needed is parsing names.
 The lexer keeps interpreting the characters as part of the name until a
-non-alpha-numeric character is reached with `peek`. 
+non-alpha-numeric character is reached with `peek`.
 
 To handle keywords, the lexer first lexes out a name, and then checks if
 that name corresponds to one of the built-in keywords. This lets `printer`
@@ -268,7 +269,7 @@ Program {
     strings: ["main"],
     main_function: 0,
     functions: [FunctionDeclaration {
-       arg_count: 0, 
+       arg_count: 0,
        body: [
           Statement::Print(Argument::Str(0)),
           Statement::Spawn(FunctionCall {
@@ -313,7 +314,7 @@ variables, so all the interpreter needs to do is lookup that position on the sta
 
 You might have noticed previously that our spawn statement now takes a single argument
 instead of two. This is because we refer to variables by their index on the
-stack instead of their name. But spawn always introduces a new variable, even if 
+stack instead of their name. But spawn always introduces a new variable, even if
 the name shadows an existing one. Because of this, there's no point having that
 second argument, since we always know that spawn pushes to the end of the stack.
 

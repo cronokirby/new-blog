@@ -2,6 +2,7 @@
 title: "Sentence Banking"
 date: 2019-07-07
 draft: false
+description: "How I used Rust, SQLite and mecab to organize Japanese sentences"
 tags:
   - Japanese
   - Rust
