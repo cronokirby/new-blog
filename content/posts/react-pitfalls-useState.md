@@ -2,6 +2,7 @@
 title: "React Pitfalls: useState initialization"
 date: 2020-01-09T10:10:11+01:00
 draft: false
+description: "A common pitfall in React is to initialize useState with a dynamic value, this leads to a bunch of weird bugs"
 tags:
   - "React"
   - "Hooks"
