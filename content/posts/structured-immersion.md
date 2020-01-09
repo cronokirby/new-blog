@@ -6,8 +6,6 @@ tags:
   - "Japanese"
   - "Programming"
 ---
-(Note: this is a first draft, and subject to change)
-
 When it comes to language learning, one approach that I really subscribe to is immersion.
 This means trying to absorb as much of the language as possible, as often as possible.
 It's often said that "speaking with locals" is a good way to accelerate the learning process,
